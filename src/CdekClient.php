@@ -105,6 +105,9 @@ class CdekClient
     private function extractOptions($request): array
     {
         if ($request instanceof CdekParamRequest) {
+            if($request->getMethod() == 'GET') {
+                return ['query' => $request->getParams()];
+            }
             return ['form_params' => $request->getParams()];
         }
 
