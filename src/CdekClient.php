@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Appwilio\CdekSDK;
 
+use Appwilio\CdekSDK\Requests\CityRequest;
+use Appwilio\CdekSDK\Responses\CityResponse;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\Handler\HandlerRegistry;
@@ -46,7 +48,8 @@ class CdekClient
             StatusReportRequest::class => StatusReportResponse::class,
         ],
         'json' => [
-            CalculationRequest::class => CalculationResponse::class,
+            CalculationRequest::class  => CalculationResponse::class,
+            CityRequest::class         => CityResponse::class,
         ],
     ];
 
@@ -92,6 +95,11 @@ class CdekClient
         return $this->process($request);
     }
 
+    public function sendCityRequest(CityRequest $request): CityResponse
+    {
+        return $this->process($request);
+    }
+
     public function sendStatusReportRequest(StatusReportRequest $request): StatusReportResponse
     {
         return $this->process($request);
@@ -105,6 +113,9 @@ class CdekClient
     private function extractOptions($request): array
     {
         if ($request instanceof CdekParamRequest) {
+            if($request->getMethod() == 'GET') {
+                return ['query' => $request->getParams()];
+            }
             return ['form_params' => $request->getParams()];
         }
 
