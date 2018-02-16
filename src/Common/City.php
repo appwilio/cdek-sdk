@@ -22,9 +22,9 @@ class City
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("Code")
-     * @JMS\Type("int")
+     * @JMS\Type("string")
      *
-     * @var int
+     * @var string
      */
     protected $Code;
 
