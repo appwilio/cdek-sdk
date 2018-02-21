@@ -20,6 +20,15 @@ class City
     use Fillable;
 
     /**
+     * @JMS\XmlAttribute
+     * @JMS\SerializedName("Code")
+     * @JMS\Type("int")
+     *
+     * @var int
+     */
+    protected $Code;
+
+    /**
      * @JMS\SerializedName("id")
      * @JMS\Type("int")
      *
