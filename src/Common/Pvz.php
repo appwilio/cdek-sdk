@@ -24,9 +24,9 @@ class Pvz
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("Code")
-     * @JMS\Type("int")
+     * @JMS\Type("string")
      *
-     * @var int
+     * @var string
      */
     public $Code;
 
@@ -202,7 +202,7 @@ class Pvz
     public $Site;
 
     /**
-     * @JMS\XmlAttribute
+     * @JMS\XmlList
      * @JMS\SerializedName("WeightLimit")
      * @JMS\Type("Appwilio\CdekSDK\Common\WeightLimit")
      *

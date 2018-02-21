@@ -13,19 +13,11 @@ declare(strict_types=1);
 
 namespace Appwilio\CdekSDK\Common;
 
+use JMS\Serializer\Annotation as JMS;
+
 class WeightLimit
 {
     use Fillable;
-
-    /**
-     * @JMS\XmlAttribute
-     * @JMS\SerializedName("Type")
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    public $Type;
-
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("WeightMin")
@@ -43,13 +35,4 @@ class WeightLimit
      * @var int
      */
     public $WeightMax;
-
-    /**
-     * @JMS\XmlAttribute
-     * @JMS\SerializedName("OwnerCode")
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    public $OwnerCode;
 }
