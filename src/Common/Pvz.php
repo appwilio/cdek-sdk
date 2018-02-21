@@ -202,7 +202,7 @@ class Pvz
     public $Site;
 
     /**
-     * @JMS\XmlAttribute
+     * @JMS\XmlList
      * @JMS\SerializedName("WeightLimit")
      * @JMS\Type("Appwilio\CdekSDK\Common\WeightLimit")
      *
