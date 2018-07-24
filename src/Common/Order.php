@@ -449,7 +449,7 @@ class Order
      */
     public function getSendCityCode(): ?int
     {
-        return $this->SendCity ? $this->SendCity->getCode() ?: null : null;
+        return $this->SendCity ? ($this->SendCity->getCode() ?: null) : null;
     }
 
     /**
@@ -475,7 +475,7 @@ class Order
      */
     public function getRecCityCode(): ?int
     {
-        return $this->RecCity ? $this->RecCity->getCode() ?: null : null;
+        return $this->RecCity ? ($this->RecCity->getCode() ?: null) : null;
     }
 
     /**
