@@ -94,7 +94,7 @@ class PvzListRequest implements ParamRequest
         return $this;
     }
 
-    public function setCashless(string $cashless)
+    public function setCashless(bool $cashless)
     {
         $this->cashless = $cashless;
 

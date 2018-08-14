@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Appwilio\CdekSDK\Common;
 
@@ -169,9 +169,10 @@ class Pvz
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("IsDressingRoom")
-     * @JMS\Type("int")
+     * @JMS\Type("string")
+     * @JMS\Accessor(getter="serializeIsDressingRoom",setter="deserializeIsDressingRoom")
      *
-     * @var int
+     * @var bool
      */
     public $IsDressingRoom;
 
@@ -179,17 +180,19 @@ class Pvz
      * @JMS\XmlAttribute
      * @JMS\SerializedName("HaveCashless")
      * @JMS\Type("string")
+     * @JMS\Accessor(getter="serializeHaveCashless",setter="deserializeHaveCashless")
      *
-     * @var string
+     * @var bool
      */
     public $HaveCashless;
 
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("AllowedCod")
-     * @JMS\Type("int")
+     * @JMS\Type("string")
+     * @JMS\Accessor(getter="serializeAllowedCod",setter="deserializeAllowedCod")
      *
-     * @var int
+     * @var bool
      */
     public $AllowedCod;
 
@@ -246,4 +249,34 @@ class Pvz
      * @var  WeightLimit
      */
     public $WeightLimit;
+
+    public function serializeHaveCashless()
+    {
+        return $this->HaveCashless ? 'есть' : 'нет';
+    }
+
+    public function deserializeHaveCashless(string $value)
+    {
+        $this->HaveCashless = $value === 'есть';
+    }
+
+    public function serializeAllowedCod()
+    {
+        return $this->AllowedCod ? 'есть' : 'нет';
+    }
+
+    public function deserializeAllowedCod(string $value)
+    {
+        $this->AllowedCod = $value === 'есть';
+    }
+
+    public function serializeIsDressingRoom()
+    {
+        return $this->IsDressingRoom ? 'есть' : 'нет';
+    }
+
+    public function deserializeIsDressingRoom(string $value)
+    {
+        $this->IsDressingRoom = $value === 'есть';
+    }
 }
