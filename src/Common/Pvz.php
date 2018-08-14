@@ -178,9 +178,9 @@ class Pvz
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("HaveCashless")
-     * @JMS\Type("int")
+     * @JMS\Type("string")
      *
-     * @var int
+     * @var string
      */
     public $HaveCashless;
 

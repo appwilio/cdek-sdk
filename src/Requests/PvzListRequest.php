@@ -47,7 +47,7 @@ class PvzListRequest implements ParamRequest
     /** @var string */
     protected $cityPostCode;
 
-    /** @var bool */
+    /** @var string */
     protected $cashless;
 
     /** @var bool */
@@ -94,7 +94,7 @@ class PvzListRequest implements ParamRequest
         return $this;
     }
 
-    public function setCashless(bool $cashless)
+    public function setCashless(string $cashless)
     {
         $this->cashless = $cashless;
 
