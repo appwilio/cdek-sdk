@@ -47,7 +47,7 @@ class PvzListRequest implements ParamRequest
     /** @var string */
     protected $cityPostCode;
 
-    /** @var string */
+    /** @var bool */
     protected $cashless;
 
     /** @var bool */
