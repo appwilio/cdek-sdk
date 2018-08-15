@@ -22,6 +22,8 @@ use JMS\Serializer\Annotation as JMS;
  */
 class Pvz
 {
+    protected const BOOLEAN_FIELDS = ['IsDressingRoom', 'AllowedCod', 'HaveCashless'];
+
     /**
      * @JMS\XmlAttribute
      * @JMS\SerializedName("Code")
@@ -170,7 +172,6 @@ class Pvz
      * @JMS\XmlAttribute
      * @JMS\SerializedName("IsDressingRoom")
      * @JMS\Type("string")
-     * @JMS\Accessor(getter="serializeIsDressingRoom",setter="deserializeIsDressingRoom")
      *
      * @var bool
      */
@@ -180,7 +181,6 @@ class Pvz
      * @JMS\XmlAttribute
      * @JMS\SerializedName("HaveCashless")
      * @JMS\Type("string")
-     * @JMS\Accessor(getter="serializeHaveCashless",setter="deserializeHaveCashless")
      *
      * @var bool
      */
@@ -190,7 +190,6 @@ class Pvz
      * @JMS\XmlAttribute
      * @JMS\SerializedName("AllowedCod")
      * @JMS\Type("string")
-     * @JMS\Accessor(getter="serializeAllowedCod",setter="deserializeAllowedCod")
      *
      * @var bool
      */
@@ -250,33 +249,13 @@ class Pvz
      */
     public $WeightLimit;
 
-    public function serializeHaveCashless()
+    /**
+     * @JMS\PostDeserialize
+     */
+    public function postDeserialize()
     {
-        return $this->HaveCashless ? 'есть' : 'нет';
-    }
-
-    public function deserializeHaveCashless(string $value)
-    {
-        $this->HaveCashless = $value === 'есть';
-    }
-
-    public function serializeAllowedCod()
-    {
-        return $this->AllowedCod ? 'есть' : 'нет';
-    }
-
-    public function deserializeAllowedCod(string $value)
-    {
-        $this->AllowedCod = $value === 'есть';
-    }
-
-    public function serializeIsDressingRoom()
-    {
-        return $this->IsDressingRoom ? 'есть' : 'нет';
-    }
-
-    public function deserializeIsDressingRoom(string $value)
-    {
-        $this->IsDressingRoom = $value === 'есть';
+        foreach (static::BOOLEAN_FIELDS as $name) {
+            $this->$name = $this->$name === 'есть';
+        }
     }
 }
