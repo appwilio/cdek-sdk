@@ -22,7 +22,7 @@ use JMS\Serializer\Annotation as JMS;
  */
 class Pvz
 {
-    protected const BOOLEAN_FIELDS = ['IsDressingRoom', 'AllowedCod', 'HaveCashless'];
+    private const BOOLEAN_FIELDS = ['IsDressingRoom', 'AllowedCod', 'HaveCashless'];
 
     /**
      * @JMS\XmlAttribute
@@ -254,8 +254,8 @@ class Pvz
      */
     public function postDeserialize()
     {
-        foreach (static::BOOLEAN_FIELDS as $name) {
-            $this->$name = $this->$name === 'есть';
+        foreach (self::BOOLEAN_FIELDS as $field) {
+            $this->$field = $this->$field === 'есть';
         }
     }
 }
