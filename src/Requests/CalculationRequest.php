@@ -127,6 +127,8 @@ class CalculationRequest implements JsonRequest
             'id'    => $serviceId,
             'param' => $param,
         ];
+
+        return $this;
     }
 
     public function getBody(): array
