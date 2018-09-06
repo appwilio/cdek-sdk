@@ -132,7 +132,7 @@ class Result
     /**
      * @return array|null
      */
-    public function getServices(): ?array
+    public function getAdditionalServices(): ?array
     {
         return $this->services;
     }
