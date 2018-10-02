@@ -50,7 +50,7 @@ composer require appwilio/cdek-sdk
         'password'       => env('CDEK_PASSWORD', ''),
         'guzzle_options' => [ // необязательные параметры
             'base_uri' => 'https://integration.cdek-asia.cn',
-            'timeout   => 5
+            'timeout'  => 5
         ]
     ],
 ```
@@ -62,7 +62,7 @@ require_once '../vendor/autoload.php';
 \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
 
 $client = new \Appwilio\CdekSDK\CdekClient('account', 'password', $guzzleOptions = [
-    'timeout => 5
+    'timeout' => 5
 ]);
 ```
 
