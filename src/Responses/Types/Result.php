@@ -81,6 +81,14 @@ class Result
      */
     protected $currency;
 
+    /**
+     * @JMS\SerializedName("services")
+     * @JMS\Type("array<Appwilio\CdekSDK\Responses\Types\AdditionalService>")
+     *
+     * @var AdditionalService[]|null
+     */
+    protected $services;
+
     public function getPrice(): ?float
     {
         return $this->price;
@@ -119,5 +127,13 @@ class Result
     public function getDeliveryDateMax(): ?\DateTimeImmutable
     {
         return $this->deliveryDateMax;
+    }
+
+    /**
+     * @return AdditionalService[]|null
+     */
+    public function getAdditionalServices()
+    {
+        return $this->services;
     }
 }

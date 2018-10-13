@@ -8,7 +8,7 @@
 
 Возможности:
 
-- :unlock:расчёт стоимости доставки
+- :unlock:расчёт стоимости доставки (API калькулятора v1.1)
 - :unlock:получение списка пунктов выдачи заказов (ПВЗ) с фильтрацией
 - управление заказами
   - формирование новых заказов
@@ -21,6 +21,9 @@
 
 > Работа с API возможна только при наличии договора с СДЭК (кроме методов, отмеченных как:unlock:).
 
+
+Существует [хард-форк](https://github.com/sanmai/cdek-sdk) этого SDK — с даунгрейдом до PHP 7.0, большей поддержкой методов API и более полной документацией. Мы планируем сделаем бэкпорт всего этого добра, как только дойдут руки...
+
 ## Установка
 
 > Минимальные требования — PHP 7.1+.
@@ -28,6 +31,8 @@
 ```bash
 composer require appwilio/cdek-sdk
 ```
+
+## Конфигурация
 
 ### Laravel 5.1+
 ```php
@@ -44,8 +49,12 @@ composer require appwilio/cdek-sdk
 // config/services.php
 
     'cdek' => [
-        'account'  => env('CDEK_ACCOUNT', ''),
-        'password' => env('CDEK_PASSWORD', ''),
+        'account'        => env('CDEK_ACCOUNT', ''),
+        'password'       => env('CDEK_PASSWORD', ''),
+        'guzzle_options' => [ // необязательные параметры
+            'base_uri' => 'https://integration.cdek-asia.cn',
+            'timeout'  => 5
+        ]
     ],
 ```
 
@@ -55,8 +64,12 @@ require_once '../vendor/autoload.php';
 
 \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
 
-$client = new \Appwilio\CdekSDK\CdekClient('account', 'password');
+$client = new \Appwilio\CdekSDK\CdekClient('account', 'password', $guzzleOptions = [
+    'timeout' => 5
+]);
 ```
+
+[Параметры Guzzle](http://docs.guzzlephp.org/en/stable/request-options.html)
 
 ## Использование
 
@@ -68,7 +81,7 @@ use Appwilio\CdekSDK\Requests\CalculationRequest;
 // для выполнения авторизованного запроса используется
 // $request = CalculationRequest::withAuthorization();
 
-$request = (CalculationRequest())
+$request = (new CalculationRequest())
     ->setSenderCityPostCode('295000')
     ->setReceiverCityPostCode('652632')
     ->addGood([
@@ -101,6 +114,6 @@ $response = $client->sendStatusReportRequest($request);
 - [greabock](https://github.com/greabock)
 - [JhaoDa](https://github.com/jhaoda)
 
-## Лиценция
+## Лицензия
 
 Данный SDK распространяется под лицензией [MIT](http://opensource.org/licenses/MIT).
