@@ -48,6 +48,24 @@ class Item
 
     /**
      * @JMS\XmlAttribute
+     * @JMS\SerializedName("PaymentVATRate")
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    protected $PaymentVATRate;
+
+    /**
+     * @JMS\XmlAttribute
+     * @JMS\SerializedName("PaymentVATSum")
+     * @JMS\Type("float")
+     *
+     * @var float
+     */
+    protected $PaymentVATSum;
+
+    /**
+     * @JMS\XmlAttribute
      * @JMS\SerializedName("Weight")
      * @JMS\Type("int")
      *
