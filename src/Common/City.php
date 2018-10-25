@@ -51,12 +51,12 @@ class City
         return $this->Code;
     }
 
-    public function getPostCode(): string
+    public function getPostCode(): ?string
     {
         return $this->PostCode;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->Name;
     }
