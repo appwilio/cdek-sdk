@@ -71,6 +71,15 @@ class Pvz
 
     /**
      * @JMS\XmlAttribute
+     * @JMS\SerializedName("PostalCode")
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    public $PostalCode;
+
+    /**
+     * @JMS\XmlAttribute
      * @JMS\SerializedName("Phone")
      * @JMS\Type("string")
      *
